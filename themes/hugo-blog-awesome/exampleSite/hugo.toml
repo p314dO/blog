@@ -1,4 +1,4 @@
-title = "Awesome Hugo blog"
+title = "p314d0"
 baseURL = 'https://hba.sid.one/'
 
 # This is what goes in <html lang="">
@@ -74,7 +74,7 @@ theme = "hugo-blog-awesome"
     weight = 30
 
 [Languages.en-gb.params]
-  sitename = "Awesome hugo blog"
+  sitename = "p314d0"
   defaultColor = "dark" # set color mode: dark, light, auto
   # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
   # the default value is set to 'auto'.
@@ -99,9 +99,9 @@ theme = "hugo-blog-awesome"
 [Languages.en-gb.params.author]
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-  intro = "Awesome hugo blog"
+  intro = "p314d0"
   name = "Sidharth R"
-  description = "A fast, minimalistic Hugo theme with light and dark mode support, for running a personal site or blog."
+  description = "An offensive security blog"
 
 # Allow to override webmanifest options
 [Languages.en-gb.params.webmanifest]
@@ -138,7 +138,7 @@ theme = "hugo-blog-awesome"
     weight = 30
 
 [Languages.it.params]
-  sitename = "Awesome hugo blog"
+  sitename = "p314d0"
   defaultColor = "dark" # set color mode: dark, light, auto
   # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
   # the default value is set to 'auto'.
@@ -163,9 +163,9 @@ theme = "hugo-blog-awesome"
 [Languages.it.params.author]
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-  intro = "Awesome hugo blog"
+  intro = "p314d0"
   name = "Sidharth R"
-  description = "Un tema Hugo veloce e minimalista con supporto per la modalità chiara e scura, per la gestione di un sito o di un blog personale."
+  description = "Un."
 
 # Allow to override webmanifest options
 [Languages.it.params.webmanifest]
@@ -268,7 +268,7 @@ theme = "hugo-blog-awesome"
     weight = 30
 
 [Languages.fr-fr.params]
-  sitename = "Awesome hugo blog"
+  sitename = "p314d0"
   defaultColor = "dark" # set color mode: dark, light, auto
   # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
   # the default value is set to 'auto'.
@@ -293,7 +293,7 @@ theme = "hugo-blog-awesome"
 [Languages.fr-fr.params.author]
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-  intro = "Awesome hugo blog"
+  intro = "p314d0"
   name = "Sidharth R"
   description = "Un thème Hugo rapide et minimaliste avec un mode clair et sombre, pour un site personnel ou un blog."
 
@@ -333,7 +333,7 @@ theme = "hugo-blog-awesome"
     weight = 30
 
 [Languages.de-de.params]
-  sitename = "Awesome hugo blog"
+  sitename = "p314d0"
   defaultColor = "dark" # set color mode: dark, light, auto
   # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
   # the default value is set to 'auto'.
@@ -358,7 +358,7 @@ theme = "hugo-blog-awesome"
 [Languages.de-de.params.author]
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-  intro = "Awesome hugo blog"
+  intro = "p314d0"
   name = "Sidharth R"
   description = "Ein schnelles, minimalistisches Hugo-Theme mit hellem und dunklem Modus, für eine persönliche Website oder Blog."
 
@@ -398,7 +398,7 @@ theme = "hugo-blog-awesome"
     weight = 30
 
 [Languages.pt-br.params]
-  sitename = "Awesome hugo blog"
+  sitename = "p314d0"
   defaultColor = "dark" # set color mode: dark, light, auto
   # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
   # the default value is set to 'auto'.
@@ -423,7 +423,7 @@ theme = "hugo-blog-awesome"
 [Languages.pt-br.params.author]
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-  intro = "Awesome hugo blog"
+  intro = "p314d0"
   name = "Sidharth R"
   description = "Um tema Hugo veloz e minimalista com suporte a modo claro e escuro para rodar um blog ou site pessoal"
 
