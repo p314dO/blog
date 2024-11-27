@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/sp/posts/</loc>
-    <lastmod>2023-05-02T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
@@ -15,8 +15,14 @@
                 href="http://localhost:1313/sp/posts/"
                 />
   </url><url>
+    <loc>http://localhost:1313/sp/tags/aws/</loc>
+    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/sp/posts/brecha-en-la-nube/</loc>
+    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/sp/</loc>
-    <lastmod>2023-05-02T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
@@ -28,17 +34,17 @@
                 href="http://localhost:1313/sp/"
                 />
   </url><url>
-    <loc>http://localhost:1313/sp/posts/table-of-content/</loc>
-    <lastmod>2023-05-02T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/sp/tags/</loc>
+    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
-                href="http://localhost:1313/posts/table-of-content/"
+                href="http://localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sp"
-                href="http://localhost:1313/sp/posts/table-of-content/"
+                href="http://localhost:1313/sp/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/sp/posts/math-typesetting/</loc>
@@ -117,19 +123,6 @@
                 rel="alternate"
                 hreflang="sp"
                 href="http://localhost:1313/sp/posts/emoji-support/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/sp/tags/</loc>
-    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-gb"
-                href="http://localhost:1313/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="sp"
-                href="http://localhost:1313/sp/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/sp/categories/</loc>

@@ -6,74 +6,16 @@
     <description>Recent content in Home on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sp</language>
-    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>I Sommari</title>
-      <link>http://localhost:1313/sp/posts/table-of-content/</link>
-      <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
+      <title>Brecha en la Nube - Pwned Labs</title>
+      <link>http://localhost:1313/sp/posts/brecha-en-la-nube/</link>
+      <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/sp/posts/table-of-content/</guid>
+      <guid>http://localhost:1313/sp/posts/brecha-en-la-nube/</guid>
       
-      <description>Sommario Questo tema supporta la visualizzazione di un sommario (Table Of Content - ToC) all&amp;rsquo;interno degli Articulos.
-Abilitare il sommario in tutti gli Articulos Per abilitare il sommario in tutti gli Articulos (globalmente) è necessario impostare il parametro toc a true in hugo.toml.
-[params] toc = true Per disabilitare il sommario globalmente invece, basta semplicemente cancellare il parametro toc oppure impostarlo a false.
-Disabilitare il sommario solo in alcuni Articulos Per disabilitare il sommario solamente in alcuni Articulos selezionati, è necessario seguire questi due passi.</description>
-      
-    </item>
-    
-    <item>
-      <title>Impaginazione Delle Formule Matematiche</title>
-      <link>http://localhost:1313/sp/posts/math-typesetting/</link>
-      <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/math-typesetting/</guid>
-      
-      <description>&lt;p&gt;La notazione matematica in un progetto Hugo può essere abilitata utilizzando delle
-&lt;a href=&#34;https://github.com/hugo-sid/hugo-blog-awesome/blob/main/layouts/partials/helpers/katex.html&#34;&gt;librerie JavaScript di terze parti&lt;/a&gt;.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Guida Alla Sintassi Markdown</title>
-      <link>http://localhost:1313/sp/posts/markdown-syntax/</link>
-      <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/markdown-syntax/</guid>
-      
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Gli Shortcode di Hugo</title>
-      <link>http://localhost:1313/sp/posts/rich-content/</link>
-      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/rich-content/</guid>
-      
-      <description>&lt;p&gt;Hugo viene distribuito con alcuni &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Shortcode integrati&lt;/a&gt; per il rich content, assieme a una &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Configurazione Per La Privacy&lt;/a&gt; ed un&amp;rsquo;insieme di semplici Shortcode che consentono di incorporare alcune versioni statiche e senza-JS di alcuni social media.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Testo Segnaposto</title>
-      <link>http://localhost:1313/sp/posts/placeholder-text/</link>
-      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/placeholder-text/</guid>
-      
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Supporto Alle Emoji</title>
-      <link>http://localhost:1313/sp/posts/emoji-support/</link>
-      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/emoji-support/</guid>
-      
-      <description>&lt;p&gt;Le emoji possono essere abilitate in un progetto Hugo in diversi modi.&lt;/p&gt;</description>
+      <description>Escenario Fuimos alertados de un posible incidente de seguridad. El equipo de seguridad de Huge Logistics le ha proporcionado claves de AWS de una cuenta que registró actividad inusual, así como registros de AWS CloudTrail en el momento de la actividad. Necesitamos confirmar la infracción analizando los registros de CloudTrail, identificando el servicio de AWS comprometido y cualquier dato que haya sido filtrado.
+Contexto del mundo real El análisis de los registros de AWS CloudTrail es una práctica estándar para detectar actividad sospechosa dentro de una cuenta de AWS, mientras que los atacantes suelen atacar los depósitos S3 debido a los datos valiosos que pueden contener.</description>
       
     </item>
     
@@ -84,9 +26,7 @@ Disabilitare il sommario solo in alcuni Articulos Per disabilitare il sommario s
       
       <guid>http://localhost:1313/sp/pages/about/</guid>
       
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
-https://github.com/yuin/goldmark https://github.</description>
+      <description>Como Penetration Tester, mi experiencia se extiende a la Seguridad de Aplicaciones Web, donde aprovecho mi base en desarrollo frontend para crear interfaces seguras y amigables para el usuario. Estoy certificado en eJPT, eWPT y eWPTX además, me estoy adentrando en el mundo de la seguridad cloud con certificaciones como ARTA y MCRTA. Mi objetivo es explorar y explotar las medidas de seguridad, asegurando que los usuarios puedan navegar de manera segura en el cambiante panorama digital actual.</description>
       
     </item>
     

@@ -1,0 +1,27 @@
+## HOME ##
+- id: "home.home"
+  translation: "Inicio"
+  
+- id: "home.recent_posts"
+  translation: "Articulos Recientes"
+
+- id: "home.see_all_posts"
+  translation: "Visualizza tutti gli Articulos"
+
+## SINGLE ##
+- id: "single.table_of_contents"
+  translation: "Resumen"
+
+## FOOTER ##
+- id: "footer.go_to_top"
+  translation: "Volver Arriba"
+
+- id: "footer.disclaimer"
+  translation: "Generado con el tema <a href=\"https://github.com/hugo-sid/hugo-blog-awesome\" target=\"_blank\" rel=\"noopener\">Hugo blog awesome</a>."
+
+## ERRORS ##
+- id: "errors.404"
+  translation: "404 QUE MIRAS BOB@!!"
+
+- id: "errors.404_description"
+  translation: "NO HAY NADA ACA"

@@ -100,7 +100,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "An offensive security blog"
 
 # Allow to override webmanifest options
@@ -164,7 +164,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "Un."
 
 # Allow to override webmanifest options
@@ -229,7 +229,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Превосходный hugo блог"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "Быстрая, минималистичная тема для Hugo с поддержкой светлого и тёмного режима для использования на персональных сайтах и блогах."
 
 # Allow to override webmanifest options
@@ -294,7 +294,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "Un thème Hugo rapide et minimaliste avec un mode clair et sombre, pour un site personnel ou un blog."
 
 # Allow to override webmanifest options
@@ -359,7 +359,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "Ein schnelles, minimalistisches Hugo-Theme mit hellem und dunklem Modus, für eine persönliche Website oder Blog."
 
 # Allow to override webmanifest options
@@ -424,7 +424,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "Um tema Hugo veloz e minimalista com suporte a modo claro e escuro para rodar um blog ou site pessoal"
 
 # Allow to override webmanifest options

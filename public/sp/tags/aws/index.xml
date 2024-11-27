@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS on p314d0</title>
+    <link>http://localhost:1313/sp/tags/aws/</link>
+    <description>Recent content in AWS on p314d0</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sp</language>
+    <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Brecha en la Nube - Pwned Labs</title>
+      <link>http://localhost:1313/sp/posts/brecha-en-la-nube/</link>
+      <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/brecha-en-la-nube/</guid>
+      
+      <description>Escenario Fuimos alertados de un posible incidente de seguridad. El equipo de seguridad de Huge Logistics le ha proporcionado claves de AWS de una cuenta que registró actividad inusual, así como registros de AWS CloudTrail en el momento de la actividad. Necesitamos confirmar la infracción analizando los registros de CloudTrail, identificando el servicio de AWS comprometido y cualquier dato que haya sido filtrado.
+Contexto del mundo real El análisis de los registros de AWS CloudTrail es una práctica estándar para detectar actividad sospechosa dentro de una cuenta de AWS, mientras que los atacantes suelen atacar los depósitos S3 debido a los datos valiosos que pueden contener.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

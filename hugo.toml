@@ -100,7 +100,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "An offensive security blog"
 
 # Allow to override webmanifest options
@@ -164,7 +164,7 @@ theme = "hugo-blog-awesome"
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "p314d0"
-  name = "Sidharth R"
+  name = "p314d0"
   description = "Un blog de seguridad ofensiva"
 
 # Allow to override webmanifest options
