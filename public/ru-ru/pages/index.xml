@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Awesome Hugo blog</title>
+    <link>http://localhost:1313/ru-ru/pages/</link>
+    <description>Recent content in Pages on Awesome Hugo blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language><atom:link href="http://localhost:1313/ru-ru/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>О проекте</title>
+      <link>http://localhost:1313/ru-ru/pages/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/ru-ru/pages/about/</guid>
+      
+      <description>Написанный на Go, Hugo - это генератор статических сайтов с открытом исходным кодом и лицензией Apache Licence 2.0.. Hugo поддерживает TOML, YAML и JSON типы файлов с данными, Markdown, HTML файлы и использует шорт коды для добавления богатого содержания. Другие возможности: таксономия, режим нескольких языков, обработка изображений, настраиваемые выходные форматы, сжатие HTML/CSS/JS и поддержка Sass SCSS рабочих процессов.
+Hugo использует множество проектов с исходным кодом, такие как:
+https://github.com/yuin/goldmark https://github.com/alecthomas/chroma https://github.com/muesli/smartcrop https://github.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
