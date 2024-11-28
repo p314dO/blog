@@ -6,7 +6,19 @@
     <description>Recent content in Posts on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IAM CreateAccessKey PrivEsc - Cybr</title>
+      <link>http://localhost:1313/posts/iam-createaccesskey-privesc/</link>
+      <pubDate>Wed, 27 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/iam-createaccesskey-privesc/</guid>
+      
+      <description>Exploit iam:CreateAccessKey to gain access to an Amazon S3 bucket containing sensitive data that your IAM user does not have permission to access. The flag is the credit card number of &amp;ldquo;Kayla Sánchez&amp;rdquo; found in the exfiltrated clients file.
+Scenario Only high-level administrators should have the iam:CreateAccessKey permission, as an attacker with this permission for other users can create an Access Key ID and Secret Key for that user, allowing them to authenticate as that user.</description>
+      
+    </item>
+    
     <item>
       <title>Breach in the Cloud - Pwned Labs</title>
       <link>http://localhost:1313/posts/breach-in-the-cloud/</link>

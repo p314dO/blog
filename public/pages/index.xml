@@ -13,9 +13,7 @@
       
       <guid>http://localhost:1313/pages/about/</guid>
       
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
-https://github.com/yuin/goldmark https://github.</description>
+      <description>As a Penetration Tester, my experience extends to Web Application Security, where I leverage my frontend development background to create secure and user-friendly interfaces. I hold certifications such as eJPT, eWPT, and eWPTX, and I am also diving into the world of cloud security with certifications like ARTA and MCRTA. My goal is to explore and exploit security measures, ensuring users can navigate safely in today’s ever-evolving digital landscape. I created this blog to share my experiences and deepen my understanding of offensive security.</description>
       
     </item>
     

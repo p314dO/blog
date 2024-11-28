@@ -2,8 +2,10 @@
 title: Brecha en la Nube - Pwned Labs
 date: 2024-11-26
 description: Usando registros de Cloudtrail para detectar actividad maliciosa
-isStarred: true
 ---
+
+![Portada](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A800%2F1*6DWtEQYyBrCGoKERCGuRMQ.jpeg&f=1&nofb=1&ipt=3b49538be2587f049778acc444dc5082bbf114485adc5b0e6116fcc78917e111&ipo=images) 
+
 
 ## Escenario
 
