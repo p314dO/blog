@@ -6,6 +6,8 @@ isStarred: true
 draft: false
 ---
 
+
+![](1.jpeg)
 **Exploit `iam:CreateLoginProfile` to Gain Access to an Amazon S3 Bucket Containing Sensitive Data**  
 
 The flag is the SSN number of "Holly Duncan" from the file "ssn.csv."  
