@@ -26,7 +26,9 @@ Scenario Only high-level administrators should have the iam:CreateAccessKey perm
       
       <guid>http://localhost:1313/posts/iam-createloginprofile-privesc/</guid>
       
-      <description></description>
+      <description>Exploit iam:CreateLoginProfile to Gain Access to an Amazon S3 Bucket Containing Sensitive Data
+The flag is the SSN number of &amp;ldquo;Holly Duncan&amp;rdquo; from the file &amp;ldquo;ssn.csv.&amp;rdquo;
+Scenario The goal of this lab is to exploit the iam:CreateLoginProfile vulnerability to grant yourself permissions you should not have. You successfully complete this lab once you access and download sensitive files containing customers&amp;rsquo; personally identifiable information (PII) from Amazon S3 and submit the SSN number of &amp;ldquo;Holly Duncan.</description>
       
     </item>
     

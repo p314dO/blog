@@ -28,19 +28,6 @@
                 href="http://localhost:1313/posts/iam-createaccesskey-privesc/"
                 />
   </url><url>
-    <loc>http://localhost:1313/posts/iam-createloginprofile-privesc/</loc>
-    <lastmod>2024-11-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="sp"
-                href="http://localhost:1313/sp/posts/iam-createloginprofile-privesc/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-gb"
-                href="http://localhost:1313/posts/iam-createloginprofile-privesc/"
-                />
-  </url><url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
     <xhtml:link

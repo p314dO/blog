@@ -55,7 +55,7 @@
         },
         "datePublished": "2024-11-27",
         "description": "Privilege escalation through create login profile.",
-        "wordCount":  0 ,
+        "wordCount":  306 ,
         "mainEntityOfPage": "True",
         "dateModified": "2024-11-27",
         "image": {
@@ -233,7 +233,49 @@ stroke-linejoin="round" class="feather feather-home">
             </header>
             
             <div class="page-content">
-                
+                <p><strong>Exploit <code>iam:CreateLoginProfile</code> to Gain Access to an Amazon S3 Bucket Containing Sensitive Data</strong></p>
+<p>The flag is the SSN number of &ldquo;Holly Duncan&rdquo; from the file &ldquo;ssn.csv.&rdquo;</p>
+<hr>
+<h2 id="scenario">Scenario</h2>
+<p>The goal of this lab is to exploit the <code>iam:CreateLoginProfile</code> vulnerability to grant yourself permissions you should not have. You successfully complete this lab once you access and download sensitive files containing customers&rsquo; personally identifiable information (PII) from Amazon S3 and submit the SSN number of &ldquo;Holly Duncan.&rdquo;</p>
+<hr>
+<h2 id="tutorial">Tutorial</h2>
+<p>After configuring the AWS CLI with the provided credentials, we begin the enumeration phase. We start with <code>sts get-caller-identity</code> and <code>iam get-user</code> to retrieve information about our user.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/1.png"><br>
+<img src="/posts/iam-createloginprofile-privesc/2.png"></p>
+<p>Our username is <code>iam-createloginprofile-privesc-1732750187209-Attacker</code>. Next, we enumerate the other users in the account.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/3.png"></p>
+<p>We find one additional user. After identifying the names, we attempt to list inline and attached policies, but lack the required permissions. Instead, we list the groups in this account.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/4.png"></p>
+<p>We identify the group <code>iam-createloginprofile-privesc-1732750187209-Developers</code>. By listing the groups associated with our user, we confirm that we belong to this group.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/5.png"></p>
+<p>Listing the inline policies of the group reveals its name, allowing us to retrieve the policy and view the permissions available to members of <code>iam-createloginprofile-privesc-1732750187209-Developers</code>.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/6.png"><br>
+<img src="/posts/iam-createloginprofile-privesc/7.png"></p>
+<p>One of the actions we can perform, which will affect the other user, is <code>iam:CreateLoginProfile</code>.</p>
+<p>Searching for ways to escalate privileges with <code>iam:CreateLoginProfile</code> leads to two key resources:</p>
+<ul>
+<li><a href="https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-iam-privesc#iam-createloginprofile-or-iam-updateloginprofile">HacktricksCloud</a></li>
+<li><a href="https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/">RhinoSecurityLabs</a></li>
+</ul>
+<p><code>iam:CreateLoginProfile</code> allows creating or updating a login profile, including setting passwords for AWS Management Console login, leading to direct privilege escalation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws iam create-login-profile --user-name target_user --no-password-reset-required --password <span class="s1">&#39;&lt;password&gt;&#39;</span>
+</span></span></code></pre></div><p>We execute the command, specifying the victim&rsquo;s username and generating a password that does not require a reset upon login.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/8.png"></p>
+<p>We log in to the AWS Management Console with the victim&rsquo;s credentials, granting us read and download permissions to an S3 bucket.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/9.png"><br>
+<img src="/posts/iam-createloginprofile-privesc/10.png"><br>
+<img src="/posts/iam-createloginprofile-privesc/11.png"></p>
+<p>After downloading the files, we find the flag.</p>
+<p><img src="/posts/iam-createloginprofile-privesc/12.png"></p>
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-iam-privesc#iam-createloginprofile-or-iam-updateloginprofile">CloudTricks</a></li>
+<li><a href="https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/">RhinoSecurityLabs</a></li>
+<li><a href="https://cybr.com/courses/iam-privilege-escalation-labs/lessons/lab-ctf-iamcreateloginprofile-privesc/">Lab</a></li>
+</ul>
+
             </div>
         </article></main>
 </div>

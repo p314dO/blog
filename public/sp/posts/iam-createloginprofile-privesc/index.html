@@ -10,10 +10,10 @@
 <meta name="application-name" content="IAM CreateLoginProfile PrivEsc - Cybr | p314d0" />
 <meta property="og:site_name" content="p314d0" />
 
-<meta name="description" content="Privilege escalation through create login profile.">
-<meta itemprop="description" content="Privilege escalation through create login profile." />
-<meta property="og:description" content="Privilege escalation through create login profile." />
-<meta name="twitter:description" content="Privilege escalation through create login profile." />
+<meta name="description" content="Privilege escalation mediante iam:createprofilelogin.">
+<meta itemprop="description" content="Privilege escalation mediante iam:createprofilelogin." />
+<meta property="og:description" content="Privilege escalation mediante iam:createprofilelogin." />
+<meta name="twitter:description" content="Privilege escalation mediante iam:createprofilelogin." />
 
 <meta property="og:locale" content="sp" />
 <meta name="language" content="sp" />
@@ -31,8 +31,8 @@
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:article:published_time" content=2024-11-27T00:00:00Z />
-    <meta property="article:published_time" content=2024-11-27T00:00:00Z />
+    <meta property="og:article:published_time" content=2024-11-28T00:00:00Z />
+    <meta property="article:published_time" content=2024-11-28T00:00:00Z />
     <meta property="og:url" content="http://localhost:1313/sp/posts/iam-createloginprofile-privesc/" />
 
     
@@ -53,11 +53,11 @@
         "@type": "Person",
         "name": ""
         },
-        "datePublished": "2024-11-27",
-        "description": "Privilege escalation through create login profile.",
-        "wordCount":  94 ,
+        "datePublished": "2024-11-28",
+        "description": "Privilege escalation mediante iam:createprofilelogin.",
+        "wordCount":  360 ,
         "mainEntityOfPage": "True",
-        "dateModified": "2024-11-27",
+        "dateModified": "2024-11-28",
         "image": {
         "@type": "imageObject",
         "url": ""
@@ -76,19 +76,19 @@
     <meta property="og:url" content="http://localhost:1313/sp/posts/iam-createloginprofile-privesc/">
   <meta property="og:site_name" content="p314d0">
   <meta property="og:title" content="IAM CreateLoginProfile PrivEsc - Cybr">
-  <meta property="og:description" content="Privilege escalation through create login profile.">
+  <meta property="og:description" content="Privilege escalation mediante iam:createprofilelogin.">
   <meta property="og:locale" content="sp">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-11-27T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-11-27T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-11-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-28T00:00:00+00:00">
 
 
     
     
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="IAM CreateLoginProfile PrivEsc - Cybr">
-  <meta name="twitter:description" content="Privilege escalation through create login profile.">
+  <meta name="twitter:description" content="Privilege escalation mediante iam:createprofilelogin.">
 
 
     
@@ -227,7 +227,7 @@ stroke-linejoin="round" class="feather feather-home">
                 
                 
                 <div class="post-meta">
-                    <time datetime="2024-11-27T00:00:00&#43;00:00" itemprop="datePublished"> 27 November 2024 </time>
+                    <time datetime="2024-11-28T00:00:00&#43;00:00" itemprop="datePublished"> 28 November 2024 </time>
                 </div>
                 
             </header>
@@ -236,8 +236,39 @@ stroke-linejoin="round" class="feather feather-home">
                 <p><img src="/sp/posts/iam-createloginprofile-privesc/1.jpeg">
 Explote iam:CreateLoginProfile para obtener acceso a un depósito de Amazon S3 que contiene datos confidenciales a los que su usuario de IAM. La bandera es el número de SSN de &ldquo;Holly Duncan&rdquo; del archivo &ldquo;ssn.csv&rdquo;.</p>
 <h2 id="escenario">Escenario</h2>
-<p>El objetivo de este laboratorio es explotar la vulnerabilidad <code>iam:CreateLoginProfile</code>  para otorgarse permisos a los que no debería tener acceso. Ha completado con éxito esta práctica de laboratorio una vez que haya accedido y descargado archivos confidenciales que contienen
-información de identificación personal del cliente en Amazon S3 y haya enviado el número de SSN de &ldquo;Holly Duncan&rdquo;.</p>
+<p>El objetivo de este laboratorio es explotar la vulnerabilidad <code>iam:CreateLoginProfile</code> para otorgarse permisos a los que no debería tener acceso. Ha completado con éxito esta práctica de laboratorio una vez que haya accedido y descargado archivos confidenciales que contienen información de identificación personal del cliente en Amazon S3 y haya enviado el número de SSN de &ldquo;Holly Duncan&rdquo;.</p>
+<h2 id="tutorial">Tutorial</h2>
+<p>Luego de configurar la CLI de AWS con las credenciales dadas, pasamos a la fase de enumeracion. Comenzamos con <code>sts get-caller-identity</code> y <code>iam get-user</code> para recuperar informacion de nuestro usuario.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/1.png"></p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/2.png"></p>
+<p>Nuestro nombre de usuario es <code>iam-createloginprofile-privesc-1732750187209-Attacker</code>. Enumeramos que otros usuarios se encuentran en la cuenta.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/3.png"></p>
+<p>Encontramos que hay un usuario mas. Luego de conseguir los nombres , paso a listar mis politicas en linea y adjuntas, pero no tengo los permisos para hacerlo. Paso a listar los grupos que hay en esta cuenta.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/4.png"></p>
+<p>Tenemos al grupo <code>iam-createloginprofile-privesc-1732750187209-Developers</code>. Y si listo los grupos a los que pertenece mi usuario, estoy dentro de ese grupo.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/5.png"></p>
+<p>Al listar las politicas del grupo en linea, recuperamos su nombre y ya con este obtenemos la politica para ver los permisos que tenemos al pertenecer al grupo <code>iam-createloginprofile-privesc-1732750187209-Developers</code>.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/6.png"></p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/7.png"></p>
+<p>Una de las acciones que podemos realizar y que tendra efecto en el otro usuario es <code>iam:create-access-key</code>.</p>
+<p>Si buscamos como escalar privilegios con iam:createAccessKey encontramos dos links principales: <a href="https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-iam-privesc#iam-createloginprofile-or-iam-updateloginprofile">HacktricksCloud</a> y <a href="https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/">RhinoSecurityLabs</a>.</p>
+<p><code>iam:CreateLoginProfile permite crear o actualizar un perfil de inicio de sesión, incluida la configuración de contraseñas para el inicio de sesión de la consola de AWS, lo que lleva a una escalada directa de privilegios.</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws iam create-login-profile --user-name target_user --no-password-reset-required --password <span class="s1">&#39;&lt;password&gt;&#39;</span>
+</span></span></code></pre></div><p>Procedemos a ejecutar el comando, dando como nombre de usuario la de la victima y generando un password, el cual no va a requerir un reset luego de loguearnos.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/8.png"></p>
+<p>Nos logueamos en la consola de AWS y el usuario victima tiene permisos de lectura y descarga en un bucket s3.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/9.png"></p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/10.png"></p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/11.png"></p>
+<p>Descargamos y encontramos la bandera.</p>
+<p><img src="/sp/posts/iam-createloginprofile-privesc/12.png"></p>
+<hr>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><a href="https://cloud.hacktricks.xyz/pentesting-cloud/aws-security/aws-privilege-escalation/aws-iam-privesc#iam-createloginprofile-or-iam-updateloginprofile">CloudTricks</a></li>
+<li><a href="https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/">RhinoSecurityLabs</a></li>
+<li><a href="https://cybr.com/courses/iam-privilege-escalation-labs/lessons/lab-ctf-iamcreateloginprofile-privesc/">Lab</a></li>
+</ul>
 
             </div>
         </article></main>
