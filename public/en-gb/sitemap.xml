@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/breach-in-the-cloud/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="sp"
@@ -18,8 +15,21 @@
                 href="http://localhost:1313/"
                 />
   </url><url>
+    <loc>http://localhost:1313/posts/iam-createaccesskey-privesc/</loc>
+    <lastmod>2024-11-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="http://localhost:1313/sp/posts/iam-createaccesskey-privesc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-gb"
+                href="http://localhost:1313/posts/iam-createaccesskey-privesc/"
+                />
+  </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="sp"
@@ -30,6 +40,9 @@
                 hreflang="en-gb"
                 href="http://localhost:1313/posts/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/posts/breach-in-the-cloud/</loc>
+    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/pages/about/</loc>
     <xhtml:link

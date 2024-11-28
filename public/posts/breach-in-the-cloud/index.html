@@ -53,7 +53,7 @@
         },
         "datePublished": "2024-11-26",
         "description": "Using CloudTrail logs to detect malicious activity",
-        "wordCount":  68 ,
+        "wordCount":  920 ,
         "mainEntityOfPage": "True",
         "dateModified": "2024-11-26",
         "image": {
@@ -198,138 +198,118 @@ stroke-linejoin="round" class="feather feather-home">
                 <p><img alt="Portada" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A800%2F1*6DWtEQYyBrCGoKERCGuRMQ.jpeg&f=1&nofb=1&ipt=3b49538be2587f049778acc444dc5082bbf114485adc5b0e6116fcc78917e111&ipo=images"></p>
 <h2 id="scenario">Scenario</h2>
 <p>We have been alerted to a potential security incident. The security team at Huge Logistics has provided AWS keys from an account that recorded unusual activity, along with AWS CloudTrail logs for the time of the activity. We need your expertise to confirm the breach by analyzing the CloudTrail logs, identifying the compromised AWS service, and any data that may have been exfiltrated.</p>
-<!-- ## Real-World Context
-
-Analyzing AWS CloudTrail logs is a standard practice for detecting suspicious activity within an AWS account. Attackers often target S3 buckets due to the valuable data they can contain.
-
----
-
-## Tutorial  
-
-### Confirming the Breach via CloudTrail Log Analysis  
-
-To begin, download the CloudTrail logs `INCIDENT-3252.zip` from the `case-files` channel in the Pwned Labs Discord.  
-
-![image](1.png)  
-
-With the case file downloaded, let’s start the investigation.  
-First, unzip the file using the following commands. If you don’t have `unzip` installed, you can install it with:  
-
-```bash
-sudo apt install unzip
-unzip INCIDENT-3252.zip -d INCIDENT-3252
-cd INCIDENT-3252
-```  
-
-Opening the file in a text editor like Nano or Vim reveals that the JSON files are not formatted:  
-![image](2.png)  
-This makes them harder to read. To format the files, we can use `jq`—a command-line JSON processor to parse and structure data. Install it with:  
-
-```bash
-sudo apt install jq
-```  
-
-Then, run the following command in the directory containing the JSON files:  
-
-```bash
-for file in *.json; do jq . "$file" > "$file.tmp" && mv "$file.tmp" "$file"; done
-```  
-
-Opening the file in Nano now shows the data in a much more readable format:  
-![image](3.png)  
-
-Let’s check which AWS principals (IAM Users or Roles) have been generating activity in the captured logs:  
-
-```bash
-grep -r userName | sort -u
-```  
-
-![image](4.png)  
-
-This reveals a suspicious username, `temp-user`, which doesn’t match the internal naming convention for created accounts. Let’s start there.  
-
-![image](5.png)  
-
-Noticing that the CloudTrail logs include timestamps in the file names and are ordered chronologically, we begin with the earliest timestamp, `T2035`. Suspecting involvement of the `temp-user` account, we search the file using `temp-user` as the keyword:  
-
-```bash
-grep -h -A 10 temp-user 107513503799_CloudTrail_us-east-1_20230826T2035Z_PjmwM7E4hZ6897Aq.json
-```  
-
-![image](6.png)  
-
-This reveals that an IAM user named `temp-user` with the globally unique Amazon Resource Name (ARN) `arn:aws:iam::107513503799:user/temp-user` from AWS account `107513503799` issued the CLI command `aws sts get-caller-identity` at `2023-08-26T20:29:37Z`.  
-
-The `GetCallerIdentity` command in AWS is part of the Security Token Service (STS) and allows users to retrieve details about the IAM identity whose credentials were used to make the API request.  
-It’s akin to the `whoami` command for Windows and Linux. This command returns the globally unique ARN and, if applicable, the ARN of the assumed IAM Role. While it’s a commonly used command, malicious actors often use it to identify the principal (IAM User or Role) associated with compromised credentials as part of their reconnaissance.  
-
-The request originated from IP address `84.32.71.19`. A lookup of the IP reveals that the request originated in Chicago, a city where Huge Logistics has no technical presence. This could be a potential indicator of compromise (IoC). Let’s dig deeper:  
-
-```bash
-curl ipinfo.io/84.32.71.19
-```  
-
-![image](7.png)  
-
-Turning our attention to the next file, a quick look shows that the `temp-user` attempted to list the contents of a bucket named `emergency-data-recovery`, but failed.  
-
-![image](8.png)  
-
-```bash
-grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2050Z_iUtQqYPskB20yZqT.json
-```  
-
-![image](9.png)  
-
-Although noisy, malicious actors may attempt to brute force permissions granted to their IAM user or role.  
-Several tools, like `aws-enumerator` and `pacu`, are available for brute-forcing IAM permissions.  
-
-We discovered that `temp-user` generated **450 Access Denied messages** in the next log file:  
-
-```bash
-grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2050Z_iUtQqYPskB20yZqT.json | wc -l
-```  
-
-![image](10.png)  
-
-Analyzing the next log file, we found that the attacker successfully assumed a role named `AdminRole`.  
-The `AssumeRole` operation in AWS, part of STS, allows an AWS identity to assume a different privilege context for a limited period, potentially granting access to resources the original principal wouldn’t have access to.  
-
-```bash
-grep -A 20 temp-user 107513503799_CloudTrail_us-east-1_20230826T2100Z_APB7fBUnHmiWjHtg.json
-```  
-
-![image](11.png)  
-
-Further examination shows that the attacker used `aws sts get-caller-identity` again to verify their new execution context:  
-
-```bash
-grep -A 20 AdminRole 107513503799_CloudTrail_us-east-1_20230826T2105Z_fpp78PgremAcrW5c.json
-```  
-
-![image](12.png)  
-
-Given their earlier interest in the `emergency-data-recovery` S3 bucket, the attacker made another attempt to list and retrieve its contents:  
-
-```bash
-grep eventName 107513503799_CloudTrail_us-east-1_20230826T2120Z_UCUhsJa0zoFY3ZO0.json
-```  
-
-![image](13.png)  
-![image](14.png)  
-
-The file `emergency.txt` was downloaded!  
-
----
-
-## Referencias
-
-- [Laboratorio en Pwed Labs](https://pwnedlabs.io/labs/breach-in-the-cloud)
-- [Link 1](https://vikas-singh.notion.site/AWS-CloudTrail-Forensics-A-SIEM-Case-Study-c88ea9f7a66e4d038500dcfe28e5e53d)
-- [Link 2](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html)
-- [Link 3](https://github.com/nagwww/s3-leaks) -->
-<p>Is cooming. . .</p>
-
+<h2 id="real-world-context">Real-World Context</h2>
+<p>Analyzing AWS CloudTrail logs is a standard practice for detecting suspicious activity within an AWS account, while attackers often target S3 buckets due to the valuable data they may contain.</p>
+<h2 id="tutorial">Tutorial</h2>
+<h3 id="confirm-the-breach-by-analyzing-cloudtrail-logs">Confirm the Breach by Analyzing CloudTrail Logs</h3>
+<p>To begin, download the <strong>CloudTrail logs INCIDENT-3252.zip</strong> from the case-files channel in the <strong>Pwned Labs Discord</strong>.</p>
+<p><img alt="image" src="/posts/breach-in-the-cloud/1.png"><br>
+With the case file downloaded, let’s start the investigation.<br>
+First, unzip the file using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">unzip INCIDENT-3252.zip -d INCIDENT-3252
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> INCIDENT-3252
+</span></span></code></pre></div><p>Opening the file in a text editor like Nano or Vim reveals that the JSON files are not formatted:<br>
+<img alt="image" src="/posts/breach-in-the-cloud/2.png"><br>
+This makes them harder to read. To beautify the files, we can use <strong>jq</strong>—a command-line JSON processor to parse and structure data. Install it if needed using the command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install jq
+</span></span></code></pre></div><p>Then run the following command in the current directory containing the JSON files:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> file in *.json<span class="p">;</span> <span class="k">do</span> jq . <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span> &gt; <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">.tmp&#34;</span> <span class="o">&amp;&amp;</span> mv <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">.tmp&#34;</span> <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">done</span>
+</span></span></code></pre></div><p>Now, when you open the file in Nano, the data is much easier to read and scan:<br>
+<img alt="image" src="/posts/breach-in-the-cloud/3.png"></p>
+<p>Let’s identify which AWS principals (IAM Users and Roles) have been generating activity in the captured logs.</p>
+<pre tabindex="0"><code>grep -r userName | sort -u
+</code></pre><p><img alt="image" src="/posts/breach-in-the-cloud/4.png"></p>
+<p>This reveals a suspicious username, <code>temp-user</code>, which does not match the internal naming convention for created accounts. Let’s start there.</p>
+<p><img alt="image" src="/posts/breach-in-the-cloud/5.png"></p>
+<p>We notice that the CloudTrail logs include the creation time in the filename and are sorted by timestamp. The earliest time is <strong>T2035</strong>, so we’ll begin there. Suspecting that the <code>temp-user</code> account is involved, we use <code>grep</code> with <code>temp-user</code> as the search term.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -h -A <span class="m">10</span> temp-user 107513503799_CloudTrail_us-east-1_20230826T2035Z_PjmwM7E4hZ6897Aq.json
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/6.png"></p>
+<p>This reveals that an IAM user named <code>temp-user</code> with the globally unique Amazon Resource Name (ARN) <code>arn:aws:iam::107513503799:user/temp-user</code> from the AWS account <code>107513503799</code> issued the AWS CLI command <code>sts get-caller-identity</code> on <code>2023-08-26T20:29:37Z</code>.</p>
+<p>The <code>GetCallerIdentity</code> command in AWS is part of the Security Token Service (STS) and allows users to retrieve details about the IAM identity whose credentials are used to make the API request.<br>
+It is essentially the <strong>whoami</strong> command for Windows and Linux. This command returns the globally unique ARN and, if applicable, the assumed IAM Role&rsquo;s ARN.<br>
+While commonly used, this command is also employed by malicious actors to determine the principal (IAM User or Role) associated with compromised credentials as part of situational awareness.</p>
+<p>The request originated from IP address <strong>84.32.71.19</strong>. An IP lookup reveals that the request originated from Chicago. Since this is not a city where <strong>Huge Logistics</strong> has a technical presence, it could be a possible Indicator of Compromise (IoC). Let’s dig deeper.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl ipinfo.io/84.32.71.19
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/7.png"></p>
+<p>Turning our attention to the next file, a quick scan reveals that the user <code>temp-user</code> made a failed attempt to list the contents of a bucket named <strong>emergency-data-recovery</strong>.</p>
+<p><img alt="image" src="/posts/breach-in-the-cloud/8.png"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2050Z_iUtQqYPskB20yZqT.json
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/9.png"></p>
+<p>Although noisy, malicious actors often attempt to brute-force permissions granted to their IAM User or Role.<br>
+Several tools, such as <strong>aws-enumerator</strong> and <strong>pacu</strong>, can be used to brute-force IAM permissions.<br>
+We found 450 <strong>Access Denied</strong> messages generated by <code>temp-user</code> in the following log file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2050Z_iUtQqYPskB20yZqT.json <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl">grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2055Z_W0F5uypAbGttUgSn.json <span class="p">|</span> wc -l
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/10.png"></p>
+<p>By analyzing the next log file and searching for actions invoked by the user, we see that they were able to assume the role named <strong>AdminRole</strong>.<br>
+The <code>AssumeRole</code> operation in AWS is part of STS. It allows an AWS identity to assume a different privilege context temporarily and potentially access resources the original principal could not access.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -A <span class="m">20</span> temp-user 107513503799_CloudTrail_us-east-1_20230826T2100Z_APB7fBUnHmiWjHtg.json
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/11.png"></p>
+<p>Examining the next file shows that the attacker invoked the <code>aws sts get-caller-identity</code> command again to verify their new execution context.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -A <span class="m">20</span> AdminRole 107513503799_CloudTrail_us-east-1_20230826T2105Z_fpp78PgremAcrW5c.json
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/12.png"></p>
+<p>Noting their prior interest in the S3 Bucket <strong>emergency-data-recovery</strong>, we discover that they attempted to enumerate and retrieve its contents again.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep eventName 107513503799_CloudTrail_us-east-1_20230826T2120Z_UCUhsJa0zoFY3ZO0.json
+</span></span></code></pre></div><p><img alt="image" src="/posts/breach-in-the-cloud/13.png"></p>
+<p><img alt="image" src="/posts/breach-in-the-cloud/14.png"></p>
+<p>The <strong>emergence.txt</strong> file was successfully downloaded!<br>
+<img alt="image" src="/posts/breach-in-the-cloud/15.png"></p>
+<hr>
+<h3 id="reproducing-the-attack-steps">Reproducing the Attack Steps</h3>
+<p>Now, thinking like an attacker, we want to validate the exploitation path and access the compromised data.<br>
+First, we issue the <code>aws configure</code> command to set up the AWS keys provided at the start of the lab for the suspected compromised user.<br>
+Next, we confirm our execution context:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ aws configure --profile pwned
+</span></span><span class="line"><span class="cl">AWS Access Key ID <span class="o">[</span>None<span class="o">]</span>: AKIARSCCN4A3WDXXXXXX
+</span></span><span class="line"><span class="cl">AWS Secret Access Key <span class="o">[</span>None<span class="o">]</span>: Wv7hFnshIshgrDKFvlrclgImQNr0az/XgzXXXXXX
+</span></span><span class="line"><span class="cl">Default region name <span class="o">[</span>None<span class="o">]</span>: 
+</span></span><span class="line"><span class="cl">Default output format <span class="o">[</span>None<span class="o">]</span>: 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ aws sts get-caller-identity --profile pwned
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;UserId&#34;</span>: <span class="s2">&#34;AIDARSCCN4A3X2YXXXXXX&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Account&#34;</span>: <span class="s2">&#34;107513503799&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Arn&#34;</span>: <span class="s2">&#34;arn:aws:iam::107513503799:user/temp-user&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Next, we check if there are inline user policies attached to the IAM user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ aws iam list-user-policies --user-name temp-user --profile pwned
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;PolicyNames&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;test-temp-user&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>This reveals a policy named <code>test-temp-user</code>. Let’s inspect it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ aws iam get-user-policy --user-name temp-user --policy-name test-temp-user --profile pwned
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;UserName&#34;</span>: <span class="s2">&#34;temp-user&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;PolicyName&#34;</span>: <span class="s2">&#34;test-temp-user&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;PolicyDocument&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Version&#34;</span>: <span class="s2">&#34;2012-10-17&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Statement&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">            <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Sid&#34;</span>: <span class="s2">&#34;VisualEditor0&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Effect&#34;</span>: <span class="s2">&#34;Allow&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Action&#34;</span>: <span class="s2">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Resource&#34;</span>: <span class="s2">&#34;arn:aws:iam::107513503799:role/AdminRole&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>This confirms that the user has permissions to assume the role named <strong>AdminRole</strong>.<br>
+Once the role is identified, the attacker attempted to assume it. We can replicate this with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ aws sts assume-role --role-arn arn:aws:iam::107513503799:role/AdminRole --role-session-name MySession --profile pwned
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Credentials&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AccessKeyId&#34;</span>: <span class="s2">&#34;ASIARSCCN4A3RCXXXXXX&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;SecretAccessKey&#34;</span>: <span class="s2">&#34;C2kcfmWYkMFPhKkxyyrWo5x75ceX/HWitSXXXXXX&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;SessionToken&#34;</span>: <span class="s2">&#34;FwoGZXIvYXdzEP///////////XXXXXXXXXXXXXXXXXXXXXXXXRzYnFhLhpZQoPTL21i8MGKsp13LObaMaRjIOQt6WtBgdYmZG8nuiKxMxOZxwmuRzZs/vAQPBEWJDk3KWcP1u6kul3ySzatir+2sh6UTVr4d8qqOUqgvrNBHNH6/x2w1O7ZznvHgOKsVbjjnQaxpFVeNwWQeVV9odqUObWD/kdc1WSBRUd0HP6gIq2R0RgMo26gqbtkMzI+XcHJzqiv9SnhhtKP3rlLgGMi1cAcfnepFQGgeRIJVe8QYM78eGTTLEDf+W4/6jua6lfxbDfBHOVkQWlcH0rTo=&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Expiration&#34;</span>: <span class="s2">&#34;2024-10-08T14:39:09+00:00&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;AssumedRoleUser&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;AssumedRoleId&#34;</span>: <span class="s2">&#34;AROARSCCN4A34V23XHK6I:MySession&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Arn&#34;</span>: <span class="s2">&#34;arn:aws:sts::107513503799:assumed-role/AdminRole/MySession&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
             </div>
         </article></main>
 </div>
@@ -338,31 +318,41 @@ The file `emergency.txt` was downloaded!
     &nbsp;
 
     <div class="footer_social-icons">
-<a href="https://github.com/hugo-sid" target="_blank" rel="noopener noreferrer me"
-    title="Github">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
+<a href="https://medium.com/@nicol4sgula" target="_blank" rel="noopener noreferrer me"
+    title="Medium">
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke-width="2"
+    viewBox="0 0 76.000000 76.000000" preserveAspectRatio="xMidYMid meet">
+    <g transform="translate(0.000000,76.000000) scale(0.100000,-0.100000)">
+        <path
+            d="M0 380 l0 -380 380 0 380 0 0 380 0 380 -380 0 -380 0 0 -380z m334 85 c30 -63 57 -115 59 -115 2 0 16 30 31 68 15 37 37 88 49 115 l20 47 76 0 76 -1 -27 -20 -28 -21 0 -151 c0 -150 0 -151 27 -179 l27 -28 -109 0 -109 0 27 28 c26 27 27 32 26 143 0 131 3 134 -71 -58 -24 -62 -48 -113 -53 -113 -6 0 -17 16 -24 35 -7 19 -36 83 -64 142 l-52 108 -3 -98 c-3 -97 -2 -99 28 -133 16 -19 30 -39 30 -44 0 -6 -31 -10 -70 -10 -45 0 -70 4 -70 11 0 6 14 27 30 46 30 33 30 35 30 151 0 116 0 118 -31 155 l-30 37 75 0 76 0 54 -115z" />
+    </g>
 </svg>
 </a>
-<a href="https://twitter.com" target="_blank" rel="noopener noreferrer me"
-    title="Twitter">
+<a href="https://www.linkedin.com/in/nicolasgula/" target="_blank" rel="noopener noreferrer me"
+    title="Linkedin">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
     stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-    </path>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
 </svg>
 </a>
-<a href="/index.xml" target="_blank" rel="noopener noreferrer me"
-    title="Rss">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 11a9 9 0 0 1 9 9" />
-    <path d="M4 4a16 16 0 0 1 16 16" />
-    <circle cx="5" cy="19" r="1" />
+<a href="https://x.com/Nicol4sGul4" target="_blank" rel="noopener noreferrer me"
+    title="X">
+    <svg viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+</svg>
+</a>
+<a href="https://app.hackthebox.com/profile/1336791" target="_blank" rel="noopener noreferrer me"
+    title="Hackthebox">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <g>
+        <path
+            d="M11.9959.0008a1.1187 1.1187 0 00-.057.002.8993.8993 0 00-.2358.0498.9067.9067 0 00-.1652.079L1.9357 5.675a.889.889 0 00-.4444.7699c0 .006.0004.0128.0006.0192-.0002.007 0 .014 0 .0212V17.556a.889.889 0 00.469.7837l9.5983 5.5416c.018.0102.036.0197.054.0287v.002a.8568.8568 0 00.083.0348c0 .001.01.003.012.004.028.01.056.0177.085.0245.01.001.011.003.016.004.028.006.057.0112.086.0146 0 .0005.01.0009.014.001.03.003.061.005.091.005s.061-.002.091-.005c0-.0005.01-.0009.014-.001a.6831.6831 0 00.086-.0146c.01-.001.011-.002.016-.004a.9404.9404 0 00.085-.0245c0-.001.01-.003.012-.004a.8818.8818 0 00.083-.0347v-.002a1.086 1.086 0 00.054-.0287l9.5986-5.5416a.889.889 0 00.4689-.7837V6.4786c0-.009-.0006-.0172-.0008-.0258h.0003v-.008a.8886.8886 0 00-.3117-.6755c-.01-.008-.019-.0162-.029-.0241 0-.002-.01-.005-.01-.007a.8988.8988 0 00-.1074-.0705L12.4533.1267a.8872.8872 0 00-.4646-.1266zm.01 2.2523c.072 0 .1443.0187.209.056l6.5366 3.774c.2789.161.2789.5633 0 .7243l-6.5367 3.774a.4182.4182 0 01-.4182 0L5.26 6.8074c-.2788-.1609-.2789-.5633 0-.7243l6.5368-3.774a.4193.4193 0 01.209-.056zm-8.0801 6.458a.4145.4145 0 01.215.0565l6.524 3.7666a.417.417 0 01.2086.3612v7.5326c0 .3212-.3477.522-.626.3613l-6.5237-3.7666a.4172.4172 0 01-.2086-.3613V9.1288c0-.2408.1955-.414.4107-.4177zm16.1599 0c.215.004.4107.1768.4107.4177v7.5325c0 .149-.08.2868-.2087.3614l-6.5239 3.7666c-.278.1606-.6258-.0401-.6258-.3614v-7.5325c0-.149.08-.2867.2086-.3613l6.5238-3.7666a.415.415 0 01.2152-.0565z">
+        </path>
+    </g>
 </svg>
 </a>
 </div>

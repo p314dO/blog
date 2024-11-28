@@ -11,135 +11,200 @@ isStarred: true
 
 We have been alerted to a potential security incident. The security team at Huge Logistics has provided AWS keys from an account that recorded unusual activity, along with AWS CloudTrail logs for the time of the activity. We need your expertise to confirm the breach by analyzing the CloudTrail logs, identifying the compromised AWS service, and any data that may have been exfiltrated.
 
-<!-- ## Real-World Context
+## Real-World Context
 
-Analyzing AWS CloudTrail logs is a standard practice for detecting suspicious activity within an AWS account. Attackers often target S3 buckets due to the valuable data they can contain.
+Analyzing AWS CloudTrail logs is a standard practice for detecting suspicious activity within an AWS account, while attackers often target S3 buckets due to the valuable data they may contain.
 
----
+## Tutorial
 
-## Tutorial  
+### Confirm the Breach by Analyzing CloudTrail Logs
 
-### Confirming the Breach via CloudTrail Log Analysis  
-
-To begin, download the CloudTrail logs `INCIDENT-3252.zip` from the `case-files` channel in the Pwned Labs Discord.  
+To begin, download the **CloudTrail logs INCIDENT-3252.zip** from the case-files channel in the **Pwned Labs Discord**.
 
 ![image](1.png)  
-
 With the case file downloaded, let’s start the investigation.  
-First, unzip the file using the following commands. If you don’t have `unzip` installed, you can install it with:  
+First, unzip the file using the following command:  
 
 ```bash
-sudo apt install unzip
 unzip INCIDENT-3252.zip -d INCIDENT-3252
 cd INCIDENT-3252
-```  
+```
 
 Opening the file in a text editor like Nano or Vim reveals that the JSON files are not formatted:  
 ![image](2.png)  
-This makes them harder to read. To format the files, we can use `jq`—a command-line JSON processor to parse and structure data. Install it with:  
+This makes them harder to read. To beautify the files, we can use **jq**—a command-line JSON processor to parse and structure data. Install it if needed using the command:
 
 ```bash
-sudo apt install jq
+apt install jq
 ```  
 
-Then, run the following command in the directory containing the JSON files:  
+Then run the following command in the current directory containing the JSON files:
 
 ```bash
 for file in *.json; do jq . "$file" > "$file.tmp" && mv "$file.tmp" "$file"; done
-```  
+```
 
-Opening the file in Nano now shows the data in a much more readable format:  
-![image](3.png)  
+Now, when you open the file in Nano, the data is much easier to read and scan:  
+![image](3.png)
 
-Let’s check which AWS principals (IAM Users or Roles) have been generating activity in the captured logs:  
+Let’s identify which AWS principals (IAM Users and Roles) have been generating activity in the captured logs.
 
-```bash
+```
 grep -r userName | sort -u
-```  
+```
 
-![image](4.png)  
+![image](4.png)
 
-This reveals a suspicious username, `temp-user`, which doesn’t match the internal naming convention for created accounts. Let’s start there.  
+This reveals a suspicious username, `temp-user`, which does not match the internal naming convention for created accounts. Let’s start there.
 
-![image](5.png)  
+![image](5.png)
 
-Noticing that the CloudTrail logs include timestamps in the file names and are ordered chronologically, we begin with the earliest timestamp, `T2035`. Suspecting involvement of the `temp-user` account, we search the file using `temp-user` as the keyword:  
+We notice that the CloudTrail logs include the creation time in the filename and are sorted by timestamp. The earliest time is **T2035**, so we’ll begin there. Suspecting that the `temp-user` account is involved, we use `grep` with `temp-user` as the search term.
 
 ```bash
 grep -h -A 10 temp-user 107513503799_CloudTrail_us-east-1_20230826T2035Z_PjmwM7E4hZ6897Aq.json
-```  
+```
 
-![image](6.png)  
+![image](6.png)
 
-This reveals that an IAM user named `temp-user` with the globally unique Amazon Resource Name (ARN) `arn:aws:iam::107513503799:user/temp-user` from AWS account `107513503799` issued the CLI command `aws sts get-caller-identity` at `2023-08-26T20:29:37Z`.  
+This reveals that an IAM user named `temp-user` with the globally unique Amazon Resource Name (ARN) `arn:aws:iam::107513503799:user/temp-user` from the AWS account `107513503799` issued the AWS CLI command `sts get-caller-identity` on `2023-08-26T20:29:37Z`.
 
-The `GetCallerIdentity` command in AWS is part of the Security Token Service (STS) and allows users to retrieve details about the IAM identity whose credentials were used to make the API request.  
-It’s akin to the `whoami` command for Windows and Linux. This command returns the globally unique ARN and, if applicable, the ARN of the assumed IAM Role. While it’s a commonly used command, malicious actors often use it to identify the principal (IAM User or Role) associated with compromised credentials as part of their reconnaissance.  
+The `GetCallerIdentity` command in AWS is part of the Security Token Service (STS) and allows users to retrieve details about the IAM identity whose credentials are used to make the API request.  
+It is essentially the **whoami** command for Windows and Linux. This command returns the globally unique ARN and, if applicable, the assumed IAM Role's ARN.  
+While commonly used, this command is also employed by malicious actors to determine the principal (IAM User or Role) associated with compromised credentials as part of situational awareness.
 
-The request originated from IP address `84.32.71.19`. A lookup of the IP reveals that the request originated in Chicago, a city where Huge Logistics has no technical presence. This could be a potential indicator of compromise (IoC). Let’s dig deeper:  
+The request originated from IP address **84.32.71.19**. An IP lookup reveals that the request originated from Chicago. Since this is not a city where **Huge Logistics** has a technical presence, it could be a possible Indicator of Compromise (IoC). Let’s dig deeper.
 
 ```bash
 curl ipinfo.io/84.32.71.19
-```  
+```
 
-![image](7.png)  
+![image](7.png)
 
-Turning our attention to the next file, a quick look shows that the `temp-user` attempted to list the contents of a bucket named `emergency-data-recovery`, but failed.  
+Turning our attention to the next file, a quick scan reveals that the user `temp-user` made a failed attempt to list the contents of a bucket named **emergency-data-recovery**.
 
-![image](8.png)  
+![image](8.png)
 
 ```bash
 grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2050Z_iUtQqYPskB20yZqT.json
-```  
+```
 
-![image](9.png)  
+![image](9.png)
 
-Although noisy, malicious actors may attempt to brute force permissions granted to their IAM user or role.  
-Several tools, like `aws-enumerator` and `pacu`, are available for brute-forcing IAM permissions.  
-
-We discovered that `temp-user` generated **450 Access Denied messages** in the next log file:  
+Although noisy, malicious actors often attempt to brute-force permissions granted to their IAM User or Role.  
+Several tools, such as **aws-enumerator** and **pacu**, can be used to brute-force IAM permissions.  
+We found 450 **Access Denied** messages generated by `temp-user` in the following log file.
 
 ```bash
 grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2050Z_iUtQqYPskB20yZqT.json | wc -l
-```  
+grep errorMessage 107513503799_CloudTrail_us-east-1_20230826T2055Z_W0F5uypAbGttUgSn.json | wc -l
+```
 
-![image](10.png)  
+![image](10.png)
 
-Analyzing the next log file, we found that the attacker successfully assumed a role named `AdminRole`.  
-The `AssumeRole` operation in AWS, part of STS, allows an AWS identity to assume a different privilege context for a limited period, potentially granting access to resources the original principal wouldn’t have access to.  
+By analyzing the next log file and searching for actions invoked by the user, we see that they were able to assume the role named **AdminRole**.  
+The `AssumeRole` operation in AWS is part of STS. It allows an AWS identity to assume a different privilege context temporarily and potentially access resources the original principal could not access.
 
 ```bash
 grep -A 20 temp-user 107513503799_CloudTrail_us-east-1_20230826T2100Z_APB7fBUnHmiWjHtg.json
-```  
+```
 
-![image](11.png)  
+![image](11.png)
 
-Further examination shows that the attacker used `aws sts get-caller-identity` again to verify their new execution context:  
+Examining the next file shows that the attacker invoked the `aws sts get-caller-identity` command again to verify their new execution context.
 
 ```bash
 grep -A 20 AdminRole 107513503799_CloudTrail_us-east-1_20230826T2105Z_fpp78PgremAcrW5c.json
-```  
+```
 
-![image](12.png)  
+![image](12.png)
 
-Given their earlier interest in the `emergency-data-recovery` S3 bucket, the attacker made another attempt to list and retrieve its contents:  
+Noting their prior interest in the S3 Bucket **emergency-data-recovery**, we discover that they attempted to enumerate and retrieve its contents again.
 
 ```bash
 grep eventName 107513503799_CloudTrail_us-east-1_20230826T2120Z_UCUhsJa0zoFY3ZO0.json
-```  
+```
 
-![image](13.png)  
-![image](14.png)  
+![image](13.png)
 
-The file `emergency.txt` was downloaded!  
+![image](14.png)
+
+The **emergence.txt** file was successfully downloaded!  
+![image](15.png)
 
 ---
 
-## Referencias
+### Reproducing the Attack Steps
 
-- [Laboratorio en Pwed Labs](https://pwnedlabs.io/labs/breach-in-the-cloud)
-- [Link 1](https://vikas-singh.notion.site/AWS-CloudTrail-Forensics-A-SIEM-Case-Study-c88ea9f7a66e4d038500dcfe28e5e53d)
-- [Link 2](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html)
-- [Link 3](https://github.com/nagwww/s3-leaks) -->
+Now, thinking like an attacker, we want to validate the exploitation path and access the compromised data.  
+First, we issue the `aws configure` command to set up the AWS keys provided at the start of the lab for the suspected compromised user.  
+Next, we confirm our execution context:
 
-Is cooming. . . 
+```bash
+❯ aws configure --profile pwned
+AWS Access Key ID [None]: AKIARSCCN4A3WDXXXXXX
+AWS Secret Access Key [None]: Wv7hFnshIshgrDKFvlrclgImQNr0az/XgzXXXXXX
+Default region name [None]: 
+Default output format [None]: 
+```
+
+```bash
+❯ aws sts get-caller-identity --profile pwned
+{
+    "UserId": "AIDARSCCN4A3X2YXXXXXX",
+    "Account": "107513503799",
+    "Arn": "arn:aws:iam::107513503799:user/temp-user"
+}
+```
+
+Next, we check if there are inline user policies attached to the IAM user:
+
+```bash
+❯ aws iam list-user-policies --user-name temp-user --profile pwned
+{
+    "PolicyNames": [
+        "test-temp-user"
+    ]
+}
+```
+
+This reveals a policy named `test-temp-user`. Let’s inspect it:
+
+```bash
+❯ aws iam get-user-policy --user-name temp-user --policy-name test-temp-user --profile pwned
+{
+    "UserName": "temp-user",
+    "PolicyName": "test-temp-user",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": "sts:AssumeRole",
+                "Resource": "arn:aws:iam::107513503799:role/AdminRole"
+            }
+        ]
+    }
+}
+```
+
+This confirms that the user has permissions to assume the role named **AdminRole**.  
+Once the role is identified, the attacker attempted to assume it. We can replicate this with the following command:
+
+```bash
+❯ aws sts assume-role --role-arn arn:aws:iam::107513503799:role/AdminRole --role-session-name MySession --profile pwned
+{
+    "Credentials": {
+        "AccessKeyId": "ASIARSCCN4A3RCXXXXXX",
+        "SecretAccessKey": "C2kcfmWYkMFPhKkxyyrWo5x75ceX/HWitSXXXXXX",
+        "SessionToken": "FwoGZXIvYXdzEP///////////XXXXXXXXXXXXXXXXXXXXXXXXRzYnFhLhpZQoPTL21i8MGKsp13LObaMaRjIOQt6WtBgdYmZG8nuiKxMxOZxwmuRzZs/vAQPBEWJDk3KWcP1u6kul3ySzatir+2sh6UTVr4d8qqOUqgvrNBHNH6/x2w1O7ZznvHgOKsVbjjnQaxpFVeNwWQeVV9odqUObWD/kdc1WSBRUd0HP6gIq2R0RgMo26gqbtkMzI+XcHJzqiv9SnhhtKP3rlLgGMi1cAcfnepFQGgeRIJVe8QYM78eGTTLEDf+W4/6jua6lfxbDfBHOVkQWlcH0rTo=",
+        "Expiration": "2024-10-08T14:39:09+00:00"
+    },
+    "AssumedRoleUser": {
+        "AssumedRoleId": "AROARSCCN4A34V23XHK6I:MySession",
+        "Arn": "arn:aws:sts::107513503799:assumed-role/AdminRole/MySession"
+    }
+}
+```
+
