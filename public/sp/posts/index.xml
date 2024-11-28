@@ -19,17 +19,5 @@ Escenario Sólo los administradores de alto nivel deben tener el permiso iam:Cre
       
     </item>
     
-    <item>
-      <title>Brecha en la Nube - Pwned Labs</title>
-      <link>http://localhost:1313/sp/posts/brecha-en-la-nube/</link>
-      <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/brecha-en-la-nube/</guid>
-      
-      <description>Escenario Fuimos alertados de un posible incidente de seguridad. El equipo de seguridad de Huge Logistics le ha proporcionado claves de AWS de una cuenta que registró actividad inusual, así como registros de AWS CloudTrail en el momento de la actividad. Necesitamos confirmar la infracción analizando los registros de CloudTrail, identificando el servicio de AWS comprometido y cualquier dato que haya sido filtrado.
-Contexto del mundo real El análisis de los registros de AWS CloudTrail es una práctica estándar para detectar actividad sospechosa dentro de una cuenta de AWS, mientras que los atacantes suelen atacar los depósitos S3 debido a los datos valiosos que pueden contener.</description>
-      
-    </item>
-    
   </channel>
 </rss>

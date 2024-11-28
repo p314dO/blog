@@ -20,18 +20,6 @@ Scenario Only high-level administrators should have the iam:CreateAccessKey perm
     </item>
     
     <item>
-      <title>Breach in the Cloud - Pwned Labs</title>
-      <link>http://localhost:1313/posts/breach-in-the-cloud/</link>
-      <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/posts/breach-in-the-cloud/</guid>
-      
-      <description>Scenario We have been alerted to a potential security incident. The security team at Huge Logistics has provided AWS keys from an account that recorded unusual activity, along with AWS CloudTrail logs for the time of the activity. We need your expertise to confirm the breach by analyzing the CloudTrail logs, identifying the compromised AWS service, and any data that may have been exfiltrated.
-Real-World Context Analyzing AWS CloudTrail logs is a standard practice for detecting suspicious activity within an AWS account, while attackers often target S3 buckets due to the valuable data they may contain.</description>
-      
-    </item>
-    
-    <item>
       <title>About</title>
       <link>http://localhost:1313/pages/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

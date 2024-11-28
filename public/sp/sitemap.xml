@@ -41,9 +41,6 @@
                 href="http://localhost:1313/sp/posts/iam-createaccesskey-privesc/"
                 />
   </url><url>
-    <loc>http://localhost:1313/sp/posts/brecha-en-la-nube/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/sp/categories/</loc>
     <xhtml:link
                 rel="alternate"
