@@ -26,8 +26,8 @@ Escenario Hemos sido alertados de un posible incidente de seguridad. El equipo d
       
       <guid>http://localhost:1313/sp/posts/introduccion-a-la-enumeracion-de-iam/</guid>
       
-      <description>Obtenga una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM. ¡Este laboratorio es bueno para los rojos y azules que buscan familiarizarse con AWS!
-Escenario Usted es un consultor de seguridad contratado por la empresa de logística global Huge Logistics. Después de una actividad sospechosa, usted tiene la tarea de enumerar el usuario de IAM. dev01 y mapear cualquier recurso potencialmente comprometido.</description>
+      <description>Obtenga una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
+Escenario Usted es un consultor de seguridad contratado por la empresa de logística global Huge Logistics. Después de una actividad sospechosa, usted tiene la tarea de enumerar el usuario de IAM dev01 y mapear cualquier recurso potencialmente comprometido. Su misión es enumerar y evaluar roles, políticas y permisos de IAM.</description>
       
     </item>
     

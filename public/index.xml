@@ -20,6 +20,19 @@ Scenario We have been alerted to a potential security incident. Huge Logistics&a
     </item>
     
     <item>
+      <title>Intro to AWS IAM Enumeration - PwnedLabs</title>
+      <link>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</link>
+      <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</guid>
+      
+      <description>Introduction to AWS CLI and IAM User, Role, Group, and Policy Enumeration
+Lab in PwnedLabs Scenario You are a security consultant hired by the global logistics company Huge Logistics. After suspicious activity, your task is to enumerate the IAM user dev01 and map any potentially compromised resources. Your mission is to list and assess IAM roles, policies, and permissions.
+Real-World Context IAM (Identity and Access Management) is critical for creating, defending, and attacking cloud services.</description>
+      
+    </item>
+    
+    <item>
       <title>IAM CreateLoginProfile PrivEsc - Cybr</title>
       <link>http://localhost:1313/posts/iam-createloginprofile-privesc/</link>
       <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>

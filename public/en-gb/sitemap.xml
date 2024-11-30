@@ -57,6 +57,8 @@
                 href="http://localhost:1313/posts/iam-createaccesskey-privesc/"
                 />
   </url><url>
+    <loc>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</loc>
+  </url><url>
     <loc>http://localhost:1313/pages/about/</loc>
     <xhtml:link
                 rel="alternate"

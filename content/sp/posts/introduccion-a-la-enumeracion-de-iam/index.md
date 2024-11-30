@@ -1,13 +1,15 @@
 ---
-title: Introduccion a la enumeracion de IAM AWS
+title: Intro a la enumeracion de AWS IAM - PwnedLabs
 date: 2024-11-29
-description: This lab demonstrates how to use AWS CloudTrail logs to detect malicious activity and perform S3 enumeration. 
+description: Una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
 isStarred: true
 ---
 
 ![aws_iam_enum.png](aws_iam_enum.png)
 
-Obtenga una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
+Una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
+
+## [Laboratorio en PwnedLabs](https://pwnedlabs.io/labs/intro-to-aws-iam-enumeration)
 
 ## Escenario
 
@@ -170,19 +172,19 @@ Podemos trazar las acciones permitidas según se aplican a los diversos recursos
 - `iam:ListUserPolicies`
 - `iam:GetUserPolicy`
 - `iam:ListGroupsForUser`
-1. IAM Role (`arn:aws:iam::794929857501:role/BackendDev`):
+2. IAM Role (`arn:aws:iam::794929857501:role/BackendDev`):
 - `iam:GetRole`
 - `iam:GetRolePolicy`
 - `iam:ListAttachedRolePolicies`
-1. Customer Managed Role Policy (`arn:aws:iam::794929857501:policy/BackendDevPolicy`):
+3. Customer Managed Role Policy (`arn:aws:iam::794929857501:policy/BackendDevPolicy`):
 - `iam:GetPolicy`
 - `iam:GetPolicyVersion`
 - `iam:ListPolicyVersions`
-1. Customer Managed Policy (`arn:aws:iam::794929857501:policy/dev01`):
+4. Customer Managed Policy (`arn:aws:iam::794929857501:policy/dev01`):
 - `iam:GetPolicy`
 - `iam:GetPolicyVersion`
 - `iam:ListPolicyVersions`
-1. Amazon Managed Policy (`arn:aws:iam::aws:policy/AmazonGuardDutyReadOnlyAccess`):
+5. Amazon Managed Policy (`arn:aws:iam::aws:policy/AmazonGuardDutyReadOnlyAccess`):
 - `iam:GetPolicy`
 - `iam:GetPolicyVersion`
 - `iam:ListPolicyVersions`
