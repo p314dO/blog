@@ -2,7 +2,7 @@
 title: IAM CreateLoginProfile PrivEsc - Cybr
 date: 2024-11-28
 description: Privilege escalation mediante iam:createprofilelogin.
-isStarred: true
+isStarred: false
 draft: false
 ---
 

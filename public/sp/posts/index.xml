@@ -6,7 +6,31 @@
     <description>Recent content in Articulos on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sp</language>
-    <lastBuildDate>Wed, 27 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Brecha en la nube - PwnedLabs</title>
+      <link>http://localhost:1313/sp/posts/brecha-en-la-nube/</link>
+      <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/brecha-en-la-nube/</guid>
+      
+      <description>Breach In The Cloud Este laboratorio muestra el uso de registros de AWS CloudTrail para detectar actividad maliciosa, así como la enumeración de S3. Para comenzar, descargue los registros de CloudTrail en INCIDENT-3252.zip del canal 🔎-case-files en Pwned Labs Discord: https://discord.gg/pwnedlabs
+Escenario Hemos sido alertados de un posible incidente de seguridad. El equipo de seguridad de Huge Logistics le ha proporcionado claves de AWS de una cuenta que registró actividad inusual, así como registros de AWS CloudTrail en el momento de la actividad.</description>
+      
+    </item>
+    
+    <item>
+      <title>IAM CreateLoginProfile PrivEsc - Cybr</title>
+      <link>http://localhost:1313/sp/posts/iam-createloginprofile-privesc/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/iam-createloginprofile-privesc/</guid>
+      
+      <description>Explote iam:CreateLoginProfile para obtener acceso a un depósito de Amazon S3 que contiene datos confidenciales a los que su usuario de IAM. La bandera es el número de SSN de &amp;ldquo;Holly Duncan&amp;rdquo; del archivo &amp;ldquo;ssn.csv&amp;rdquo;.
+Escenario El objetivo de este laboratorio es explotar la vulnerabilidad iam:CreateLoginProfile para otorgarse permisos a los que no debería tener acceso. Ha completado con éxito esta práctica de laboratorio una vez que haya accedido y descargado archivos confidenciales que contienen información de identificación personal del cliente en Amazon S3 y haya enviado el número de SSN de &amp;ldquo;Holly Duncan&amp;rdquo;.</description>
+      
+    </item>
+    
     <item>
       <title>IAM CreateAccessKey PrivEsc - Cybr</title>
       <link>http://localhost:1313/sp/posts/iam-createaccesskey-privesc/</link>
@@ -16,18 +40,6 @@
       
       <description>Explote iam:CreateAccessKey para obtener acceso a un bucket S3 de Amazon que contiene datos confidenciales a los que su usuario IAM no tiene acceso. La bandera es el número de tarjeta de crédito de &amp;ldquo;Kayla Sánchez&amp;rdquo; del archivo de clientes exfiltrados.
 Escenario Sólo los administradores de alto nivel deben tener el permiso iam:CreateAccessKey , ya que un atacante con este permiso sobre otros usuarios puede crear un Access Key ID y una Secret Key para ese usuario, lo que significa que pueden autenticarse como ese usuario.</description>
-      
-    </item>
-    
-    <item>
-      <title>IAM CreateLoginProfile PrivEsc - Cybr</title>
-      <link>http://localhost:1313/sp/posts/iam-createloginprofile-privesc/</link>
-      <pubDate>Wed, 27 Nov 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/sp/posts/iam-createloginprofile-privesc/</guid>
-      
-      <description>Explote iam:CreateLoginProfile para obtener acceso a un depósito de Amazon S3 que contiene datos confidenciales a los que su usuario de IAM. La bandera es el número de SSN de &amp;ldquo;Holly Duncan&amp;rdquo; del archivo &amp;ldquo;ssn.csv&amp;rdquo;.
-Escenario El objetivo de este laboratorio es explotar la vulnerabilidad iam:CreateLoginProfile para otorgarse permisos a los que no debería tener acceso. Ha completado con éxito esta práctica de laboratorio una vez que haya accedido y descargado archivos confidenciales que contienen información de identificación personal del cliente en Amazon S3 y haya enviado el número de SSN de &amp;ldquo;Holly Duncan&amp;rdquo;.</description>
       
     </item>
     

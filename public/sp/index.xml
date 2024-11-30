@@ -6,7 +6,19 @@
     <description>Recent content in Home on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sp</language>
-    <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Brecha en la nube - PwnedLabs</title>
+      <link>http://localhost:1313/sp/posts/brecha-en-la-nube/</link>
+      <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/brecha-en-la-nube/</guid>
+      
+      <description>Breach In The Cloud Este laboratorio muestra el uso de registros de AWS CloudTrail para detectar actividad maliciosa, así como la enumeración de S3. Para comenzar, descargue los registros de CloudTrail en INCIDENT-3252.zip del canal 🔎-case-files en Pwned Labs Discord: https://discord.gg/pwnedlabs
+Escenario Hemos sido alertados de un posible incidente de seguridad. El equipo de seguridad de Huge Logistics le ha proporcionado claves de AWS de una cuenta que registró actividad inusual, así como registros de AWS CloudTrail en el momento de la actividad.</description>
+      
+    </item>
+    
     <item>
       <title>IAM CreateLoginProfile PrivEsc - Cybr</title>
       <link>http://localhost:1313/sp/posts/iam-createloginprofile-privesc/</link>
