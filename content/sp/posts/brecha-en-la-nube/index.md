@@ -5,7 +5,6 @@ description: Usando los logs de AWS CloudTrail para detectar actividad maliciosa
 isStarred: true
 ---
 
-# Breach In The Cloud
 
 ![Intro](intro.jpg)
 

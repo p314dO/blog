@@ -2,7 +2,6 @@
 title: IAM CreateAccessKey PrivEsc - Cybr
 date: 2024-11-27
 description: Privilege escalation through access key creation.
-isStarred: true
 ---
 
 ![Cover](1.jpeg)
