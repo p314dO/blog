@@ -2,7 +2,7 @@
 title: Intro to AWS IAM Enumeration - PwnedLabs
 date: 2024-11-29
 description: This lab demonstrates how to use AWS CloudTrail logs to detect malicious activity and perform S3 enumeration. 
-isStarred: true
+isStarred: false
 ---
 
 ![aws_iam_enum.png](aws_iam_enum.png)

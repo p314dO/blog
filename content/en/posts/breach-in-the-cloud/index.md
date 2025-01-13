@@ -2,7 +2,7 @@
 title: Breach in the cloud - PwnedLabs
 date: 2024-11-29
 description: This lab demonstrates how to use AWS CloudTrail logs to detect malicious activity and perform S3 enumeration. 
-isStarred: true
+isStarred: false
 ---
 
 ![Intro](intro.jpg)
