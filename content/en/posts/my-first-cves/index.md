@@ -7,7 +7,7 @@ isStarred: true
 
 ![cve](1.png)
 
-During an investigation on the application [Monica](https://hub.docker.com/_/monica), I identified 4 new CVEs in a single day. All of them are Client-Side Injection vulnerabilities leading to Stored XSS.
+During an investigation on the application [Monica](https://hub.docker.com/_/monica), I identified 5 new CVEs in a single day. All of them are Client-Side Injection vulnerabilities leading to Stored XSS.
 
 ## CVE-2024-54994
 ### CSTI Leading to Stored Cross-Site Scripting (XSS)
@@ -110,7 +110,24 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 
 ![cve-2024-5998](Poc3.gif)
 
+---
+## CVE-2024-54999
+### CSTI Leading to Stored Cross-Site Scripting (XSS)
 
+**Description**: MonicaHQ v4.1.2 was found to contain a client-side injection vulnerability via the *last_name* parameter in the *General Information* module.  
+**Affected Versions**: v4.1.2  
+**Researcher**: [Nicolás Gula](https://www.linkedin.com/in/nicolasgula/)  
+**Disclosure Link**: [GitHub](https://github.com/p314dO/CVEs/tree/main/CVE-2024-54999)  
+**NIST CVE Link**: https://nvd.nist.gov/vuln/detail/CVE-2024-54999  
+
+### Details
+
+- MonicaHQ 4.1.2 is vulnerable to client-side template injection. An authenticated attacker can inject malicious code into the *last_name* field in the "General Information" form within */settings*.
+- To exploit this vulnerability, the following payload can be injected into the *last_name* field:
+
+```
+ty {{toString().constructor.constructor('alert(1)')()}}.
+```
 ----
 
 
@@ -122,5 +139,6 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 - https://nvd.nist.gov/vuln/detail/CVE-2024-54996
 - https://nvd.nist.gov/vuln/detail/CVE-2024-54997
 - https://nvd.nist.gov/vuln/detail/CVE-2024-54998
+- https://nvd.nist.gov/vuln/detail/CVE-2024-54999
 - https://github.com/p314dO/CVEs/tree/main
 - https://portswigger.net/research/evading-defences-using-vuejs-script-gadgets
