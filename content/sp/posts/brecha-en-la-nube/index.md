@@ -2,7 +2,7 @@
 title: Brecha en la nube - PwnedLabs
 date: 2024-11-29
 description: Usando los logs de AWS CloudTrail para detectar actividad maliciosa.
-isStarred: true
+isStarred: false
 ---
 
 

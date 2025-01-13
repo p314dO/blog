@@ -2,7 +2,7 @@
 title: Intro a la enumeracion de AWS IAM - PwnedLabs
 date: 2024-11-29
 description: Una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
-isStarred: true
+isStarred: false
 ---
 
 ![aws_iam_enum.png](aws_iam_enum.png)
