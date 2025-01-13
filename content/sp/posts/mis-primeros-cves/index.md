@@ -11,7 +11,7 @@ isStarred: true
 Durante una investigacion sobre la aplicacion [monica](https://hub.docker.com/_/monica), identifique 4 nuevos CVE en un dia. Todas son Client-Side Injection conduciendo a Stored XSS.
 
 ## CVE-2024-54994
-### Client Side Template Injection que conduce a Stored Cross-Site Scripting(XSS)
+### CSTI que conduce a Stored Cross-Site Scripting(XSS)
 
 **Descripción**: Se descubrió que MonicaHQ v4.1.2 contiene múltiples vulnerabilidades de inyección del lado del cliente a través de los parámetros *first_name* y *last_name* en la función *Add a new relationship*.  
 **Versiones afectadas**: v4.1.2  
@@ -21,8 +21,8 @@ Durante una investigacion sobre la aplicacion [monica](https://hub.docker.com/_/
 
 ### Descripcion
 
-- MonicaHQ 4.1.2 es vulnerable a la inyección de plantilla del lado del cliente. Un atacante autenticado puede inyectar código malicioso en parámetros *first_name* y *last_name* en el formulario *Add a new relationship*.
-- Para explotar esta vulnerabilidad, se puede colocar la siguiente carga útil en los parámetros *first_name* y *last_name*: 
+- MonicaHQ 4.1.2 es vulnerable a la inyección de plantilla del lado del cliente. Un atacante autenticado puede inyectar código malicioso en los parámetros *first_name* y *last_name* en el formulario *Add a new relationship*.
+- Para explotar esta vulnerabilidad, se puede colocar la siguiente carga útil en los parámetros *first_name* y *last_name* : 
 
 ```
 ty {{toString().constructor.constructor('alert(1)')()}}. 
@@ -39,7 +39,7 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 ---
 
 ## CVE-2024-54996
-### Client Side Template Injection que conduce a Stored Cross-Site Scripting(XSS)
+### CSTI que conduce a Stored Cross-Site Scripting(XSS)
 
 **Descripción**: Se descubrió que MonicaHQ v4.1.2 contiene múltiples vulnerabilidades de inyección del lado del cliente autenticadas a través de los parámetros de *title* y *description* en */people/ID/reminders/create*.  
 **Versiones afectadas**: v4.1.2  
@@ -49,7 +49,7 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 
 ### Descripcion
 
-- MonicaHQ 4.1.2 es vulnerable a la inyección de plantillas del lado del cliente. Un atacante autenticado puede inyectar código malicioso en los campos *title* y *description* del formulario "*What would you like to be reminded of about Test?*"  dentro de la seccion */people/ID/reminders/create*. 
+- MonicaHQ 4.1.2 es vulnerable a la inyección de plantillas del lado del cliente. Un atacante autenticado puede inyectar código malicioso en los campos *title*  y *description* del formulario "*What would you like to be reminded of about Test?*"  dentro de la seccion */people/ID/reminders/create*. 
 - Para explotar esta vulnerabilidad, se puede inyectar la siguiente carga útil en el title y description campo: 
 
 ```
@@ -63,7 +63,7 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 ---
 
 ## CVE-2024-54997
-### Client Side Template Injection que conduce a Stored Cross-Site Scripting(XSS)
+### CSTI que conduce a Stored Cross-Site Scripting(XSS)
 
 **Descripción**: Se descubrió que MonicaHQ v4.1.1 contiene una vulnerabilidad de inyección del lado del cliente autenticada a través del campo de texto de entrada en */journal/entries/ID/edit*.  
 **Versiones afectadas**: v4.1.1  
@@ -73,7 +73,7 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 
 ### Descripcion
 
-- MonicaHQ 4.1.1 es vulnerable a la inyección de plantillas del lado del cliente. Un atacante autenticado puede inyectar código malicioso en el *entry* campo en el formulario "*Edit a journal entry*" dentro del */journal/entries/ID/edit sección*. 
+- MonicaHQ 4.1.1 es vulnerable a la inyección de plantillas del lado del cliente. Un atacante autenticado puede inyectar código malicioso en el *entry* campo en el formulario "*Edit a journal entry*" dentro de la sección */journal/entries/ID/edit*. 
 - Para explotar esta vulnerabilidad, se puede inyectar la siguiente carga útil en el *entry* campo: 
 
 ```
@@ -87,7 +87,7 @@ ty {{toString().constructor.constructor('alert(1)')()}}.
 ---
 
 ## CVE-2024-54998
-### Client Side Template Injection que conduce a Stored Cross-Site Scripting(XSS)
+### CSTI que conduce a Stored Cross-Site Scripting(XSS)
 
 **Descripción**: Se descubrió que MonicaHQ v4.1.2 contenía una vulnerabilidad de inyección del lado del cliente autenticada a través del parámetro *Reason* en */people/h:[id]/debts/create*.  
 **Versiones afectadas**: v4.1.2  
