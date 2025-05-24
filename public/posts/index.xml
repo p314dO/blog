@@ -6,7 +6,23 @@
     <description>Recent content in Posts on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 29 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First CVEs</title>
+      <link>http://localhost:1313/posts/my-first-cves/</link>
+      <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/my-first-cves/</guid>
+      
+      <description>During an investigation on the application Monica, I identified 5 new CVEs in a single day. All of them are Client-Side Injection vulnerabilities leading to Stored XSS.
+CVE-2024-54994 CSTI Leading to Stored Cross-Site Scripting (XSS) Description: MonicaHQ v4.1.2 was found to contain multiple client-side injection vulnerabilities through the first_name and last_name parameters in the Add a new relationship function.
+Affected Versions: v4.1.2
+Researcher: Nicolás Gula
+Disclosure Link: GitHub
+NIST CVE Link: https://nvd.</description>
+      
+    </item>
+    
     <item>
       <title>Breach in the cloud - PwnedLabs</title>
       <link>http://localhost:1313/posts/breach-in-the-cloud/</link>
@@ -16,6 +32,19 @@
       
       <description>This lab demonstrates the use of AWS CloudTrail logs to detect malicious activity as well as S3 enumeration. To begin, download the CloudTrail logs in INCIDENT-3252.zip from the 🔎-case-files channel on Pwned Labs Discord: https://discord.gg/pwnedlabs
 Scenario We have been alerted to a potential security incident. Huge Logistics&amp;rsquo; security team has provided you with AWS keys for an account that recorded unusual activity, along with AWS CloudTrail logs from the time of the activity.</description>
+      
+    </item>
+    
+    <item>
+      <title>Intro to AWS IAM Enumeration - PwnedLabs</title>
+      <link>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</link>
+      <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</guid>
+      
+      <description>Introduction to AWS CLI and IAM User, Role, Group, and Policy Enumeration
+Lab in PwnedLabs Scenario You are a security consultant hired by the global logistics company Huge Logistics. After suspicious activity, your task is to enumerate the IAM user dev01 and map any potentially compromised resources. Your mission is to list and assess IAM roles, policies, and permissions.
+Real-World Context IAM (Identity and Access Management) is critical for creating, defending, and attacking cloud services.</description>
       
     </item>
     
@@ -41,17 +70,6 @@ Scenario The goal of this lab is to exploit the iam:CreateLoginProfile vulnerabi
       
       <description>Exploit iam:CreateAccessKey to gain access to an Amazon S3 bucket containing sensitive data that your IAM user does not have permission to access. The flag is the credit card number of &amp;ldquo;Kayla Sánchez&amp;rdquo; found in the exfiltrated clients file.
 Scenario Only high-level administrators should have the iam:CreateAccessKey permission, as an attacker with this permission for other users can create an Access Key ID and Secret Key for that user, allowing them to authenticate as that user.</description>
-      
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/posts/intro-to-aws-iam-enumeration/</guid>
-      
-      <description></description>
       
     </item>
     

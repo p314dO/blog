@@ -2,7 +2,7 @@
 title: Mis primeros CVEs
 date: 2025-01-13
 description: La publicacion de mis primeros CVEs
-isStarred: true
+isStarred: false
 ---
 
 

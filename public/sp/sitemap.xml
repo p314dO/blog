@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/sp/posts/</loc>
-    <lastmod>2024-11-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
@@ -15,11 +15,8 @@
                 href="http://localhost:1313/sp/posts/"
                 />
   </url><url>
-    <loc>http://localhost:1313/sp/posts/brecha-en-la-nube/</loc>
-    <lastmod>2024-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/sp/</loc>
-    <lastmod>2024-11-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
@@ -30,6 +27,12 @@
                 hreflang="sp"
                 href="http://localhost:1313/sp/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/sp/posts/mis-primeros-cves/</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/sp/posts/brecha-en-la-nube/</loc>
+    <lastmod>2024-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/sp/posts/introduccion-a-la-enumeracion-de-iam/</loc>
     <lastmod>2024-11-29T00:00:00+00:00</lastmod>

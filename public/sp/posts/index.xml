@@ -6,7 +6,36 @@
     <description>Recent content in Articulos on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sp</language>
-    <lastBuildDate>Fri, 29 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduccion al Machine Learning - HTB</title>
+      <link>http://localhost:1313/sp/posts/introduccion-al-machine-learning/</link>
+      <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/introduccion-al-machine-learning/</guid>
+      
+      <description>Los términos Artificial Intelligence(AI) y Machine Learning(ML) están estrechamente relacionados, pero representan conceptos distintos con aplicaciones y fundamentos teóricos específicos.
+AI - Artificial Intelligence La AI (IA en spanish) es un campo amplio centrado en el desarrollo de sistemas inteligentes capaces de realizar tareas que normalmente requieren inteligencia humana.
+Estas tareas incluyen:
+Natural Language Processing: Permitir que las computadoras comprendan, interpreten y generen lenguaje humano. Computer Vision: Permitir que las computadoras &amp;ldquo;vean&amp;rdquo; e interpreten imágenes y vídeos.</description>
+      
+    </item>
+    
+    <item>
+      <title>Mis primeros CVEs</title>
+      <link>http://localhost:1313/sp/posts/mis-primeros-cves/</link>
+      <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/mis-primeros-cves/</guid>
+      
+      <description>Durante una investigacion sobre la aplicacion monica, identifique 5 nuevos CVE en un dia. Todas son Client-Side Injection conduciendo a Stored XSS.
+CVE-2024-54994 CSTI que conduce a Stored Cross-Site Scripting(XSS) Descripción: Se descubrió que MonicaHQ v4.1.2 contiene múltiples vulnerabilidades de inyección del lado del cliente a través de los parámetros first_name y last_name en la función Add a new relationship.
+Versiones afectadas: v4.1.2
+Researcher: Nicolas Gula
+Enlace de divulgación: Github</description>
+      
+    </item>
+    
     <item>
       <title>Brecha en la nube - PwnedLabs</title>
       <link>http://localhost:1313/sp/posts/brecha-en-la-nube/</link>
@@ -20,14 +49,14 @@ Escenario Hemos sido alertados de un posible incidente de seguridad. El equipo d
     </item>
     
     <item>
-      <title>Introduccion a la enumeracion de IAM AWS</title>
+      <title>Intro a la enumeracion de AWS IAM - PwnedLabs</title>
       <link>http://localhost:1313/sp/posts/introduccion-a-la-enumeracion-de-iam/</link>
       <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/sp/posts/introduccion-a-la-enumeracion-de-iam/</guid>
       
-      <description>Obtenga una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
-Escenario Usted es un consultor de seguridad contratado por la empresa de logística global Huge Logistics. Después de una actividad sospechosa, usted tiene la tarea de enumerar el usuario de IAM dev01 y mapear cualquier recurso potencialmente comprometido. Su misión es enumerar y evaluar roles, políticas y permisos de IAM.</description>
+      <description>Una introducción a la AWS CLI, así como a la enumeración de usuarios, roles, grupos y políticas de IAM.
+Laboratorio en PwnedLabs Escenario Usted es un consultor de seguridad contratado por la empresa de logística global Huge Logistics. Después de una actividad sospechosa, usted tiene la tarea de enumerar el usuario de IAM dev01 y mapear cualquier recurso potencialmente comprometido. Su misión es enumerar y evaluar roles, políticas y permisos de IAM.</description>
       
     </item>
     
