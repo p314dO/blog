@@ -1,6 +1,6 @@
 ---
-title: Introduccion al Machine Learning - HTB
-date: 2025-05-23
+title: Introduccion al Machine Learning
+date: 2025-05-24
 description: Resumen de lo aprendido en HTB AI-Red-Teamer
 isStarred: true
 ---
@@ -12,7 +12,7 @@ Los términos Artificial Intelligence(AI) y Machine Learning(ML) están estrecha
 ### AI - Artificial Intelligence
 ![AI](1.png)
 
-La AI (IA en spanish) es un campo amplio centrado en el desarrollo de sistemas inteligentes capaces de realizar *tareas* que normalmente requieren inteligencia humana.
+La AI es un campo amplio centrado en el desarrollo de sistemas inteligentes capaces de realizar *tareas* que normalmente requieren inteligencia humana.
 
 Estas tareas incluyen:
 - `Natural Language Processing`: Permitir que las computadoras comprendan, interpreten y generen lenguaje humano.

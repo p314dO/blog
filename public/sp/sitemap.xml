@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/sp/posts/algoritmos-de-aprendizaje-supervisado/</loc>
+    <lastmod>2025-05-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/sp/posts/</loc>
-    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
@@ -16,7 +19,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/sp/</loc>
-    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-gb"
@@ -27,6 +30,12 @@
                 hreflang="sp"
                 href="http://localhost:1313/sp/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/sp/posts/introduccion-al-machine-learning/</loc>
+    <lastmod>2025-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/sp/posts/ai-red-teamer/</loc>
+    <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/sp/posts/mis-primeros-cves/</loc>
     <lastmod>2025-01-13T00:00:00+00:00</lastmod>

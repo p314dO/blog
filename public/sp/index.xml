@@ -6,18 +6,43 @@
     <description>Recent content in Home on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sp</language>
-    <lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduccion al Machine Learning - HTB</title>
+      <title>Algoritmos de Aprendizaje Supervisado</title>
+      <link>http://localhost:1313/sp/posts/algoritmos-de-aprendizaje-supervisado/</link>
+      <pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/algoritmos-de-aprendizaje-supervisado/</guid>
+      
+      <description>Los algoritmos de APRENDIZAJE SUPERVISADO son la piedra angular de muchas aplicaciones de Machine Learning, ya que permiten que los sistemas aprendan de datos etiquetados y realicen predicciones precisas.
+Cómo funciona el aprendizaje supervisado Imagina que le estás enseñando a un niño a identificar diferentes frutas. Le muestras una manzana y le dices: &amp;ldquo;Esto es una manzana&amp;rdquo;. Luego le muestras una naranja y le dices: &amp;ldquo;Esto es una naranja&amp;rdquo;. Al presentarle ejemplos repetidamente con etiquetas, el niño aprende a distinguir las frutas según sus características, como el color, la forma y el tamaño.</description>
+      
+    </item>
+    
+    <item>
+      <title>Introduccion al Machine Learning</title>
       <link>http://localhost:1313/sp/posts/introduccion-al-machine-learning/</link>
-      <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/sp/posts/introduccion-al-machine-learning/</guid>
       
       <description>Los términos Artificial Intelligence(AI) y Machine Learning(ML) están estrechamente relacionados, pero representan conceptos distintos con aplicaciones y fundamentos teóricos específicos.
-AI - Artificial Intelligence La AI (IA en spanish) es un campo amplio centrado en el desarrollo de sistemas inteligentes capaces de realizar tareas que normalmente requieren inteligencia humana.
+AI - Artificial Intelligence La AI es un campo amplio centrado en el desarrollo de sistemas inteligentes capaces de realizar tareas que normalmente requieren inteligencia humana.
 Estas tareas incluyen:
 Natural Language Processing: Permitir que las computadoras comprendan, interpreten y generen lenguaje humano. Computer Vision: Permitir que las computadoras &amp;ldquo;vean&amp;rdquo; e interpreten imágenes y vídeos.</description>
+      
+    </item>
+    
+    <item>
+      <title>AI Red Teamer HackTheBox &amp; Google</title>
+      <link>http://localhost:1313/sp/posts/ai-red-teamer/</link>
+      <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/ai-red-teamer/</guid>
+      
+      <description>HackTheBox, en colaboracion con Google, lanzo un nuevo path para Red Teamers especializados en Inteligencia Artificial. Este path incluye los siguiente modulos:
+Fundamentos de la IA: Este módulo ofrece una guía completa sobre los fundamentos teóricos de la Inteligencia Artificial (IA). Abarca diversos paradigmas de aprendizaje, incluyendo el aprendizaje supervisado, no supervisado y de refuerzo, proporcionando una sólida comprensión de los algoritmos y conceptos clave.
+Aplicaciones de la IA en InfoSec: Este módulo es una introducción práctica a la creación de modelos de IA aplicables a diversos ámbitos de la seguridad informática.</description>
       
     </item>
     
