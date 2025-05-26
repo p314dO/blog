@@ -6,7 +6,19 @@
     <description>Recent content in Home on p314d0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sp</language>
-    <lastBuildDate>Sun, 25 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/sp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Regresion Lineal</title>
+      <link>http://localhost:1313/sp/posts/regresion-lineal/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/sp/posts/regresion-lineal/</guid>
+      
+      <description>La regresión lineal es un algoritmo de aprendizaje supervisado que se usa para predecir un valor continuo (como el precio de algo) basado en una o más características (como el tamaño de una casa). Lo hace creando una relación lineal entre el valor que queremos predecir (el precio) y las características que usamos para predecirlo (el tamaño de la casa).
+Imagina que quieres saber cuánto costaría una casa dependiendo de su tamaño.</description>
+      
+    </item>
+    
     <item>
       <title>Algoritmos de Aprendizaje Supervisado</title>
       <link>http://localhost:1313/sp/posts/algoritmos-de-aprendizaje-supervisado/</link>
@@ -116,7 +128,7 @@ Escenario Sólo los administradores de alto nivel deben tener el permiso iam:Cre
       
       <guid>http://localhost:1313/sp/pages/about/</guid>
       
-      <description>Como Penetration Tester, mi experiencia se extiende a la Seguridad de Aplicaciones Web, donde aprovecho mi base en desarrollo frontend para crear interfaces seguras y amigables para el usuario. Estoy certificado en eJPT, eWPT y eWPTX además, me estoy adentrando en el mundo de la seguridad cloud con certificaciones como ARTA y MCRTA. Mi objetivo es explorar y explotar las medidas de seguridad, asegurando que los usuarios puedan navegar de manera segura en el cambiante panorama digital actual.</description>
+      <description>Como Penetration Tester, mi experiencia se extiende a la Seguridad de Aplicaciones Web, donde aprovecho mi base en desarrollo frontend para crear interfaces seguras y amigables para el usuario. Estoy certificado en eJPT, eWPT y eWPTX además, me estoy adentrando en el mundo de la seguridad cloud con certificaciones como ARTA,MCRTA y en el mundo de la Inteligencia Artificial. Mi objetivo es explorar y explotar las medidas de seguridad, asegurando que los usuarios puedan navegar de manera segura en el cambiante panorama digital actual.</description>
       
     </item>
     
