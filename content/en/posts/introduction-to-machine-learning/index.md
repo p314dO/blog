@@ -1,11 +1,11 @@
 ---
 title: Introduction to Machine Learning
-date: 2025-05-24
+date: 2025-10-18
 description: Summary of what I learned at HTB AI-Red-Teamer
 isStarred: true
 ---
 
-![AI](ai.webp)
+![AI](ai.png)
 
 The terms Artificial Intelligence (AI) and Machine Learning (ML) are closely related, but they represent distinct concepts with specific applications and theoretical foundations.
 
