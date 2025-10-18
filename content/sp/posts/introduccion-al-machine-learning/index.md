@@ -1,5 +1,5 @@
 ---
-title: Introduction to Machine Learning
+title: Introduccion al Machine Learning
 date: 2025-05-24
 description: Summary of what I learned at HTB AI-Red-Teamer
 isStarred: true
